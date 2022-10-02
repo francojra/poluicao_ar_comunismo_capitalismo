@@ -22,4 +22,33 @@ library(tidyverse)
 library(cols4all)
 library(hrbrthemes)
 
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+par <- read.csv("share-deaths-air-pollution.csv")
+view(par)
+names(par)
+
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
+
+par <- par %>%
+  select(-Code) %>%
+  rename(poluicao_mortes = Deaths...Cause..All.causes...Risk..Air.pollution...Sex..Both...Age..Age.standardized..Percent.) %>%
+  view()
+
+par1 <- par %>%
+  filter(Entity %in% c("United States", "Japan", "Germany",
+                       "Cuba", "China", "North Korea")) %>%
+  group_by(Entity) %>%
+  summarise(media = mean(poluicao_mortes),
+            sd = sd(poluicao_mortes), n = n(),
+            se = sd/sqrt(n)) %>%
+  view()
+
+par2 <- par %>%
+  filter(Entity %in% c("United States", "Japan", "Germany",
+                       "Cuba", "China", "North Korea")) %>%
+  view() 
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
 
