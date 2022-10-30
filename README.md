@@ -1,4 +1,4 @@
-# Poluição do ar em países capitalistas e comunistas
+# Poluição do ar em países democratas e autocratas
 
 ### Autoria do script: Jeanne Franco
 ### Data: 01/10/22 
